@@ -53,6 +53,7 @@ python train.py --epochs 1 --batch-size 16 --csv-path emg_hand_gestures.csv
 - `hardware/bom.csv`
 - `hardware/pinout.csv`
 - `hardware/connections.csv`
+- `hardware/adc-amplifier.md`
 - `hardware/reference-schematic.md`
 - `hardware/mechanical/mounting-plate.svg`
 

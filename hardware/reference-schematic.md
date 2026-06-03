@@ -20,6 +20,12 @@ FPC connector
   -> EMG1..EMG8 analog inputs
   -> +5V harness rail
 
+ADC / EMG amplifier
+  -> electrode differential input
+  -> AD8226 instrumentation amplifier
+  -> TL084 active filtering / limiting / output conditioning
+  -> OUT to MCU ADC after 0-3.3 V protection
+
 ESP32-S3 GPIO nets
   -> IO1_1..IO5_3
   -> five-channel finger joint driver logic
@@ -37,7 +43,9 @@ ESP32-S3 GPIO nets
 
 截图右侧 FPC 连接器可见 `EMG1` 到 `EMG8`、`GND` 和 `+5V` 网络。仓库文档按 8 路 EMG 输入整理。
 
-量产或打样前需要从 EasyEDA 源文件导出 netlist，确认每个 `EMGx` 连接到 ESP32-S3 的具体 ADC GPIO，并补充输入保护、RC 滤波和前端输出电压范围。
+用户补充的 ADC 放大器原理图显示，EMG/ADC 前端由 `AD8226ARZ-R7` 仪表放大器和 `TL084CDT` 四运放构成，使用 `+9V`、`-9V` 双电源，末端输出网络名为 `OUT`。详见 `hardware/adc-amplifier.md`。
+
+量产或打样前需要从 EasyEDA 源文件导出 netlist，确认每个 `EMGx` 连接到 ESP32-S3 的具体 ADC GPIO，并补充输入保护、RC 滤波和前端输出电压范围。由于放大器运行在 `±9V` 供电下，进入 ESP32-S3 ADC 前必须确认信号已经转换并限制在 MCU 允许的 ADC 电压范围内。
 
 ## 5 通道关节驱动
 
@@ -70,4 +78,5 @@ ESP32-S3 GPIO nets
 - ERC/DRC 报告
 - `EMG1..EMG8` 到具体 GPIO 的 netlist
 - `IO1_1..IO5_3` 到具体 GPIO 的 netlist
+- ADC 放大器 `OUT` 到 ESP32-S3 ADC 前的电平转换/保护电路
 - 输出级负载类型、额定电流、发热和保护验证

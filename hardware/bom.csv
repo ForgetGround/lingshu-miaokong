@@ -5,12 +5,22 @@ Item,Qty,Reference,Part,Description,Notes
 4,1,U17,LTC4054 or compatible,Single-cell Li-ion/LiPo linear charger,Charge BAT from VBUS with protection design reviewed before production
 5,1,U18,3.3 V regulator or DC/DC,3V3 system rail regulator,Confirm input/output current budget for radio and drivers
 6,1,FPC1,AF01-S12FCA-00 or compatible,12-pin FPC connector for EMG harness,Includes GND/EMG1..EMG8/+5V nets in schematic screenshot
-7,8,EMG1-EMG8,EMG analog input channels,External EMG front-end inputs,ADC protection/filtering should be verified on PCB
-8,5,U7/U8 and related logic,Multiplexer/driver logic,Five-channel finger joint drive control,Each finger exposes three OUT nets in screenshot
-9,15,U1-U6/U9-U17,Low-side switch stage,Per-joint output switch,One stage per OUTx_y net
-10,15,D1-D15,SS34 or compatible,Flyback or clamp diode,Verify diode direction and load type before production
-11,15,LED1-LED15,GLG0803UR01 or compatible,Per-output indicator LED,Optional debug/status indicator
-12,15,R1-R17,3.3 kOhm,LED current-limiting resistor,Value from schematic screenshot
-13,2,BOOT/RESET,TS-1068-AR02016 or compatible,Tactile buttons,Boot and reset controls
-14,1,BT1,Single-cell Li-ion/LiPo battery,Battery power source,Use protected battery pack
-15,1,ENC1,Custom enclosure or mounting carrier,Mechanical housing,Keep antenna keepout and electrode strain relief
+7,8,EMG1-EMG8,EMG analog input channels,External EMG front-end outputs into MCU board,ADC protection/filtering should be verified on PCB
+8,1 per analog channel,U1,AD8226ARZ-R7,Instrumentation amplifier,ADC/EMG amplifier first stage from provided schematic
+9,1 per analog channel,U3,TL084CDT,Quad JFET-input operational amplifier,Post-amplifier filtering/rectifier/output conditioning stages
+10,1 per analog channel,R2,240 Ohm,AD8226 gain resistor,Sets instrumentation amplifier gain according to AD8226 design
+11,3 per analog channel,R6/R7/R8/R9/R10,150 kOhm,TL084 stage resistor network,Values from ADC amplifier schematic screenshot
+12,2 per analog channel,R4/R5,80.6 kOhm,Active filter resistor network,Values from ADC amplifier schematic screenshot
+13,1 per analog channel,R1,10 kOhm,Final output stage feedback resistor,Value from ADC amplifier schematic screenshot
+14,1 per analog channel,R3,1 kOhm,Final output stage input resistor,Value from ADC amplifier schematic screenshot
+15,1 per analog channel,C4,10 nF,AC coupling or high-pass network capacitor,Value from ADC amplifier schematic screenshot
+16,3 per analog channel,C1/C2/C3,1 uF,Supply decoupling and active filter capacitors,Values from ADC amplifier schematic screenshot
+17,3 per analog channel,D1/D2/D17/D3,Signal clamp or limiter diodes,Verify exact diode type and orientation from EasyEDA source
+18,5,U7/U8 and related logic,Multiplexer/driver logic,Five-channel finger joint drive control,Each finger exposes three OUT nets in screenshot
+19,15,U1-U6/U9-U17,Low-side switch stage,Per-joint output switch,One stage per OUTx_y net
+20,15,D1-D15,SS34 or compatible,Flyback or clamp diode,Verify diode direction and load type before production
+21,15,LED1-LED15,GLG0803UR01 or compatible,Per-output indicator LED,Optional debug/status indicator
+22,15,R1-R17,3.3 kOhm,LED current-limiting resistor,Value from schematic screenshot
+23,2,BOOT/RESET,TS-1068-AR02016 or compatible,Tactile buttons,Boot and reset controls
+24,1,BT1,Single-cell Li-ion/LiPo battery,Battery power source,Use protected battery pack
+25,1,ENC1,Custom enclosure or mounting carrier,Mechanical housing,Keep antenna keepout and electrode strain relief
