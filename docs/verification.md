@@ -56,4 +56,4 @@ python train.py --epochs 1 --batch-size 16 --csv-path emg_hand_gestures.csv
 - `hardware/reference-schematic.md`
 - `hardware/mechanical/mounting-plate.svg`
 
-硬件资料描述参考连接关系和结构尺寸，实际打样前需要完成原理图 ERC、PCB DRC、安规和抗干扰验证。
+硬件资料按 `ESP32-S3-WROOM-1-N16R8` 核心板和用户提供的原理图截图整理，描述参考连接关系和结构尺寸。实际打样前需要完成 EasyEDA 源文件复核、原理图 ERC、PCB DRC、安规和抗干扰验证。

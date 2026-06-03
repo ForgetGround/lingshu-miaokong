@@ -1,9 +1,14 @@
 From,To,Description
-EMG sensor VCC,ESP32-S3 3V3,Power the analog module when it supports 3.3 V operation
-EMG sensor GND,ESP32-S3 GND,Common reference for ADC measurement
-EMG sensor SIG,ESP32-S3 GPIO4,Analog input sampled by ADC
-Electrode +,EMG sensor positive input,Surface electrode on target forearm muscle
-Electrode -,EMG sensor negative input,Surface electrode near same muscle group
-Reference electrode,EMG sensor reference input,Reference electrode on electrically quiet area
-LiPo battery,Power switch,Main battery input
-Power switch,ESP32-S3 VIN or regulator input,Board power input following dev board specification
+USB Type-C VBUS,Li-ion/LiPo charger input,USB provides charging/programming power path
+USB Type-C D+,ESP32-S3 USB_D+,Native USB programming and serial data
+USB Type-C D-,ESP32-S3 USB_D-,Native USB programming and serial data
+Battery BAT,Power switch input,Main battery feed
+Power switch output,3.3 V regulator input,System power after switch
+3.3 V regulator output,ESP32-S3 3V3,System rail for MCU
+ESP32-S3 GPIO0,BOOT button,Boot strap control
+ESP32-S3 EN,RESET button,Module reset control
+FPC GND,System GND,EMG harness reference ground
+FPC EMG1..EMG8,ESP32-S3 ADC capable GPIOs,Eight EMG analog input channels
+FPC +5V,External EMG module supply or harness supply,Only use if the analog front-end is designed for this rail
+ESP32-S3 IO1_1..IO5_3,5-channel joint driver logic,Control signals for five fingers with three joints each
+Driver OUT1_1..OUT5_3,Joint loads,Switched outputs for finger actuators or external driver inputs

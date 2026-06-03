@@ -1,11 +1,16 @@
 Item,Qty,Reference,Part,Description,Notes
-1,1,U1,ESP32-S3 DevKitC-1,Main MCU development board,Reference controller for serial/BLE data streaming
-2,1,U2,Analog EMG sensor module,Single-channel EMG analog front-end,Use an isolated battery-powered setup during body contact testing
-3,3,E1-E3,Ag/AgCl snap electrodes,Disposable surface EMG electrodes,Two measurement electrodes plus one reference electrode
-4,1,BT1,3.7 V LiPo battery,Battery power source,Do not power body-contact analog front-end from unsafe supplies
-5,1,U3,LiPo charger module,USB battery charger,Use module with protection circuit
-6,1,SW1,SPDT slide switch,Power switch,Place between battery and load
-7,1,J1,USB-C cable,Programming and serial output,For MCU programming and non-body-contact debug
-8,1,J2,3-pin JST-PH connector,Electrode harness connector,Signal plus reference wiring
-9,1,ENC1,3D printed or laser-cut enclosure,Mechanical enclosure,Keep electrode leads strain-relieved
-10,4,M1-M4,M2 screws and standoffs,Board mounting hardware,Use nonconductive standoffs near analog input
+1,1,U19,ESP32-S3-WROOM-1-N16R8,ESP32-S3 module with 16 MB flash and 8 MB PSRAM,Project main controller module
+2,1,U20,USB Type-C receptacle,USB programming/debug connector,Connect USB D+/D- to ESP32-S3 native USB pins
+3,1,U21,SK12D07VG6,Slide power switch,Main power switch
+4,1,U17,LTC4054 or compatible,Single-cell Li-ion/LiPo linear charger,Charge BAT from VBUS with protection design reviewed before production
+5,1,U18,3.3 V regulator or DC/DC,3V3 system rail regulator,Confirm input/output current budget for radio and drivers
+6,1,FPC1,AF01-S12FCA-00 or compatible,12-pin FPC connector for EMG harness,Includes GND/EMG1..EMG8/+5V nets in schematic screenshot
+7,8,EMG1-EMG8,EMG analog input channels,External EMG front-end inputs,ADC protection/filtering should be verified on PCB
+8,5,U7/U8 and related logic,Multiplexer/driver logic,Five-channel finger joint drive control,Each finger exposes three OUT nets in screenshot
+9,15,U1-U6/U9-U17,Low-side switch stage,Per-joint output switch,One stage per OUTx_y net
+10,15,D1-D15,SS34 or compatible,Flyback or clamp diode,Verify diode direction and load type before production
+11,15,LED1-LED15,GLG0803UR01 or compatible,Per-output indicator LED,Optional debug/status indicator
+12,15,R1-R17,3.3 kOhm,LED current-limiting resistor,Value from schematic screenshot
+13,2,BOOT/RESET,TS-1068-AR02016 or compatible,Tactile buttons,Boot and reset controls
+14,1,BT1,Single-cell Li-ion/LiPo battery,Battery power source,Use protected battery pack
+15,1,ENC1,Custom enclosure or mounting carrier,Mechanical housing,Keep antenna keepout and electrode strain relief

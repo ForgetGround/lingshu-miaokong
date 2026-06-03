@@ -15,7 +15,7 @@
 ├── tests/            # 基础验证测试
 ├── docs/             # 架构、数据格式和验证说明
 ├── hardware/         # 硬件参考资料、BOM、接线和结构文件
-├── firmware/         # ESP32 参考固件骨架
+├── firmware/         # ESP32-S3-WROOM-1-N16R8 参考固件骨架
 ├── requirements.txt  # Python 依赖
 └── README.md
 ```
@@ -32,6 +32,12 @@ python train.py --epochs 1 --batch-size 16 --csv-path emg_hand_gestures.csv
 ```
 
 完整验证说明见 [docs/verification.md](docs/verification.md)。
+
+## 硬件
+
+当前硬件主控选型为 `ESP32-S3-WROOM-1-N16R8`。硬件资料按当前原理图截图整理，包含 8 路 EMG/FPC 输入、USB-C、电池充电/供电和 5 指关节驱动输出说明。
+
+详见 [hardware/README.md](hardware/README.md) 和 [hardware/reference-schematic.md](hardware/reference-schematic.md)。
 
 ## 数据格式
 
