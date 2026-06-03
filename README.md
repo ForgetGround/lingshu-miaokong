@@ -35,7 +35,7 @@ python train.py --epochs 1 --batch-size 16 --csv-path emg_hand_gestures.csv
 
 ## 硬件
 
-当前硬件主控选型为 `ESP32-S3-WROOM-1-N16R8`。硬件资料按当前原理图截图整理，包含 8 路 EMG/FPC 输入、AD8226 + TL084 ADC/EMG 放大器、USB-C、电池充电/供电和 5 指关节驱动输出说明。
+当前硬件主控选型为 `ESP32-S3-WROOM-1-N16R8`。硬件资料按当前原理图设计整理，包含 8 路 EMG/FPC 输入、AD8226 + TL084 ADC/EMG 放大器、USB-C、电池充电/供电和 5 指关节驱动输出说明。
 
 详见 [hardware/README.md](hardware/README.md) 和 [hardware/reference-schematic.md](hardware/reference-schematic.md)。
 
