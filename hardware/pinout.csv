@@ -1,0 +1,8 @@
+Signal,ESP32-S3 Pin,Direction,Voltage,Description
+EMG_ADC,GPIO4,Input,0-3.3 V,Analog EMG sensor output
+EMG_REF,GND,Reference,0 V,Sensor and MCU ground reference
+EMG_VCC,3V3,Power,3.3 V,Sensor supply if module supports 3.3 V
+STATUS_LED,GPIO48,Output,3.3 V,Optional status LED on many ESP32-S3 dev boards
+BOOT_BUTTON,GPIO0,Input,3.3 V,Optional firmware boot button
+SERIAL_TX,USB CDC,Output,USB,CSV or JSON frame streaming to host
+SERIAL_RX,USB CDC,Input,USB,Configuration commands from host

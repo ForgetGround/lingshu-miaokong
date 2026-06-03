@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="90mm" height="55mm" viewBox="0 0 90 55">
+  <title>LingShu MiaoKong Reference Mounting Plate</title>
+  <desc>Reference laser-cut mounting plate for ESP32-S3 dev board and EMG sensor module.</desc>
+  <rect x="1" y="1" width="88" height="53" rx="3" ry="3" fill="none" stroke="#111111" stroke-width="0.4"/>
+  <rect x="8" y="8" width="50" height="38" rx="1" ry="1" fill="none" stroke="#2563eb" stroke-width="0.35"/>
+  <text x="33" y="27" font-family="Arial, sans-serif" font-size="3.2" text-anchor="middle" fill="#2563eb">ESP32-S3</text>
+  <rect x="63" y="12" width="22" height="24" rx="1" ry="1" fill="none" stroke="#16a34a" stroke-width="0.35"/>
+  <text x="74" y="25" font-family="Arial, sans-serif" font-size="2.8" text-anchor="middle" fill="#16a34a">EMG AFE</text>
+  <circle cx="6" cy="6" r="1.2" fill="none" stroke="#111111" stroke-width="0.4"/>
+  <circle cx="84" cy="6" r="1.2" fill="none" stroke="#111111" stroke-width="0.4"/>
+  <circle cx="6" cy="49" r="1.2" fill="none" stroke="#111111" stroke-width="0.4"/>
+  <circle cx="84" cy="49" r="1.2" fill="none" stroke="#111111" stroke-width="0.4"/>
+  <circle cx="12" cy="12" r="1" fill="none" stroke="#2563eb" stroke-width="0.3"/>
+  <circle cx="54" cy="12" r="1" fill="none" stroke="#2563eb" stroke-width="0.3"/>
+  <circle cx="12" cy="42" r="1" fill="none" stroke="#2563eb" stroke-width="0.3"/>
+  <circle cx="54" cy="42" r="1" fill="none" stroke="#2563eb" stroke-width="0.3"/>
+  <circle cx="66" cy="15" r="0.9" fill="none" stroke="#16a34a" stroke-width="0.3"/>
+  <circle cx="82" cy="15" r="0.9" fill="none" stroke="#16a34a" stroke-width="0.3"/>
+  <circle cx="66" cy="33" r="0.9" fill="none" stroke="#16a34a" stroke-width="0.3"/>
+  <circle cx="82" cy="33" r="0.9" fill="none" stroke="#16a34a" stroke-width="0.3"/>
+  <line x1="58" y1="24" x2="63" y2="24" stroke="#111111" stroke-width="0.25" stroke-dasharray="1 1"/>
+  <text x="45" y="52" font-family="Arial, sans-serif" font-size="2.6" text-anchor="middle" fill="#111111">Reference plate: 90 mm x 55 mm, M2 mounting holes</text>
+</svg>

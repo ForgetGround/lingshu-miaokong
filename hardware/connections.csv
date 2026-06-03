@@ -1,0 +1,9 @@
+From,To,Description
+EMG sensor VCC,ESP32-S3 3V3,Power the analog module when it supports 3.3 V operation
+EMG sensor GND,ESP32-S3 GND,Common reference for ADC measurement
+EMG sensor SIG,ESP32-S3 GPIO4,Analog input sampled by ADC
+Electrode +,EMG sensor positive input,Surface electrode on target forearm muscle
+Electrode -,EMG sensor negative input,Surface electrode near same muscle group
+Reference electrode,EMG sensor reference input,Reference electrode on electrically quiet area
+LiPo battery,Power switch,Main battery input
+Power switch,ESP32-S3 VIN or regulator input,Board power input following dev board specification

@@ -1,0 +1,11 @@
+Item,Qty,Reference,Part,Description,Notes
+1,1,U1,ESP32-S3 DevKitC-1,Main MCU development board,Reference controller for serial/BLE data streaming
+2,1,U2,Analog EMG sensor module,Single-channel EMG analog front-end,Use an isolated battery-powered setup during body contact testing
+3,3,E1-E3,Ag/AgCl snap electrodes,Disposable surface EMG electrodes,Two measurement electrodes plus one reference electrode
+4,1,BT1,3.7 V LiPo battery,Battery power source,Do not power body-contact analog front-end from unsafe supplies
+5,1,U3,LiPo charger module,USB battery charger,Use module with protection circuit
+6,1,SW1,SPDT slide switch,Power switch,Place between battery and load
+7,1,J1,USB-C cable,Programming and serial output,For MCU programming and non-body-contact debug
+8,1,J2,3-pin JST-PH connector,Electrode harness connector,Signal plus reference wiring
+9,1,ENC1,3D printed or laser-cut enclosure,Mechanical enclosure,Keep electrode leads strain-relieved
+10,4,M1-M4,M2 screws and standoffs,Board mounting hardware,Use nonconductive standoffs near analog input

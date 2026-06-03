@@ -18,3 +18,4 @@ best_model_dict.pth
 *.ckpt
 
 emg_hand_gestures.csv
+sample_emg_hand_gestures.csv
