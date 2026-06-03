@@ -1,6 +1,6 @@
 # 验证说明
 
-本文档用于说明拉取仓库后的基础验证路径。
+本文档说明拉取仓库后的基础验证路径。验证目标是确认代码链路可运行，不用于证明真实硬件性能或模型准确率。
 
 ## 环境
 
@@ -23,7 +23,7 @@ python -m pip install -r requirements.txt
 python scripts/make_sample_dataset.py --output emg_hand_gestures.csv --samples-per-class 24
 ```
 
-该脚本生成的是合成数据，仅用于验证代码链路，不代表真实 EMG 采集质量。
+该脚本生成合成数据，仅用于验证数据读取、测试和训练流程。
 
 ## 运行测试
 
@@ -41,20 +41,22 @@ python -m unittest discover -s tests
 ## 训练冒烟测试
 
 ```bash
-python train.py --epochs 1 --batch-size 16 --csv-path emg_hand_gestures.csv
+python train.py --epochs 1 --batch-size 16 --csv-path emg_hand_gestures.csv --save-path /tmp/lingshu_smoke_model.pth
 ```
 
-该命令只验证训练流程可以执行，不用于证明模型真实准确率。
+该命令只验证训练流程可以执行。合成数据上的准确率不应作为真实性能指标。
 
-## 硬件资料验证
+## 硬件资料复核
 
 硬件参考资料位于 `hardware/`：
 
+- `hardware/README.md`
 - `hardware/bom.csv`
 - `hardware/pinout.csv`
 - `hardware/connections.csv`
 - `hardware/adc-amplifier.md`
 - `hardware/reference-schematic.md`
+- `hardware/safety-notes.md`
 - `hardware/mechanical/mounting-plate.svg`
 
-硬件资料按 `ESP32-S3-WROOM-1-N16R8` 核心板和当前原理图设计整理，描述参考连接关系和结构尺寸。实际打样前需要完成 EasyEDA 源文件复核、原理图 ERC、PCB DRC、安规和抗干扰验证。
+硬件资料按 `ESP32-S3-WROOM-1-N16R8` 原型方案整理。实际打样或对外发布硬件文件前，需要完成原理图源文件复核、ERC、PCB DRC、BOM 替代料评估、模拟前端安全验证和输出驱动负载验证。

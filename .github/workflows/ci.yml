@@ -21,4 +21,4 @@ jobs:
       - name: Run tests
         run: python -m unittest discover -s tests
       - name: Training smoke test
-        run: python train.py --epochs 1 --batch-size 16 --csv-path emg_hand_gestures.csv
+        run: python train.py --epochs 1 --batch-size 16 --csv-path emg_hand_gestures.csv --save-path /tmp/lingshu_smoke_model.pth

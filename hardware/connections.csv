@@ -8,10 +8,11 @@ Power switch output,3.3 V regulator input,System power after switch
 ESP32-S3 GPIO0,BOOT button,Boot strap control
 ESP32-S3 EN,RESET button,Module reset control
 FPC GND,System GND,EMG harness reference ground
-Electrodes,AD8226 + TL084 ADC amplifier input,Differential EMG input and analog conditioning chain
-ADC amplifier OUT,ESP32-S3 ADC capable GPIOs,Conditioned EMG signal after level shifting/protection
-FPC EMG1..EMG8,ESP32-S3 ADC capable GPIOs,Eight conditioned EMG analog input channels after front-end verification
-FPC +5V,External EMG module supply or harness supply,Only use if the analog front-end is designed for this rail
-ADC amplifier +9V/-9V,Dual analog supply rails,Required by the provided amplifier schematic
+Electrodes,AD8226 + TL084 ADC/EMG amplifier input,Differential EMG input and analog conditioning chain
+ADC/EMG amplifier OUT,ADC input conditioning,Conditioned signal before MCU input protection
+ADC input conditioning,ESP32-S3 ADC capable GPIOs,Level-shifted and protected EMG signal for MCU sampling
+FPC EMG1..EMG8,ESP32-S3 ADC capable GPIOs,Eight conditioned EMG input channels after front-end verification
+FPC +5V,External EMG harness rail,Use only when the connected front-end is designed for this rail
+ADC/EMG amplifier +9V/-9V,Dual analog supply rails,Required by the analog front-end design
 ESP32-S3 IO1_1..IO5_3,5-channel joint driver logic,Control signals for five fingers with three joints each
-Driver OUT1_1..OUT5_3,Joint loads,Switched outputs for finger actuators or external driver inputs
+Driver OUT1_1..OUT5_3,Joint loads,Switched outputs for actuators or external driver inputs

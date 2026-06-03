@@ -12,6 +12,10 @@ env/
 
 .DS_Store
 
+.pio/
+build/
+dist/
+
 best_model_dict.pth
 *.pth
 *.pt

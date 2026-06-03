@@ -1,20 +1,31 @@
 # 灵枢秒控
 
-基于 PyTorch 的 1D ResNet18 EMG 手势分类训练项目。训练目标是将长度为 200 的肌电信号分类为三种手势：`fist`、`relax`、`open`。
+灵枢秒控是一个面向肌电（EMG）手势识别原型的开源参考项目。仓库包含 PyTorch 训练代码、合成样例数据生成脚本、基础测试、ESP32-S3 参考固件骨架和硬件参考资料。
 
-> 当前仓库提供训练代码、数据格式、验证脚本和硬件参考资料。硬件部分是参考设计文件，尚未声明为已量产或已完成全套电气认证。
+当前训练代码实现的是单通道、长度为 200 的 1D EMG 窗口分类，默认识别三类手势：`fist`、`relax`、`open`。
 
-## 项目结构
+## 项目状态
+
+本仓库适用于代码链路验证、硬件方案复核和原型开发参考。硬件资料为参考设计整理，不包含生产验证、医疗器械认证或电气安全认证结论。合成样例数据仅用于 smoke test，不代表真实 EMG 数据质量或模型准确率。详细范围见 [docs/project-status.md](docs/project-status.md)。
+
+当前限制：
+
+- 训练脚本消费 `signal_0` 到 `signal_199` 的单通道窗口。
+- 参考固件按 8 路 EMG 采集框架组织，输出格式需要在接入训练前转换为训练 CSV 格式。
+- 硬件 GPIO 映射仍需依据 EasyEDA 原理图源文件或 netlist 复核。
+- ADC/EMG 放大器使用 `+9V/-9V` 模拟电源，接入 ESP32-S3 ADC 前必须完成电平转换、限流和钳位保护验证。
+
+## 仓库结构
 
 ```text
 .
-├── dataset.py        # 读取 CSV、分层划分训练/验证/测试集、标准化特征
-├── model.py          # 1D ResNet18 手势分类模型
-├── train.py          # 模型训练入口
+├── dataset.py        # CSV 读取、分层划分、标准化和 Dataset 封装
+├── model.py          # 1D ResNet18 EMG 分类模型
+├── train.py          # 训练、验证、测试和 checkpoint 保存入口
 ├── scripts/          # 样例数据生成脚本
-├── tests/            # 基础验证测试
-├── docs/             # 架构、数据格式和验证说明
-├── hardware/         # 硬件参考资料、BOM、接线和结构文件
+├── tests/            # 基础单元测试
+├── docs/             # 架构、数据格式、验证和项目状态说明
+├── hardware/         # 硬件参考资料、BOM、连接关系和安全说明
 ├── firmware/         # ESP32-S3-WROOM-1-N16R8 参考固件骨架
 ├── requirements.txt  # Python 依赖
 └── README.md
@@ -28,16 +39,10 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 python scripts/make_sample_dataset.py --output emg_hand_gestures.csv --samples-per-class 24
 python -m unittest discover -s tests
-python train.py --epochs 1 --batch-size 16 --csv-path emg_hand_gestures.csv
+python train.py --epochs 1 --batch-size 16 --csv-path emg_hand_gestures.csv --save-path /tmp/lingshu_smoke_model.pth
 ```
 
-完整验证说明见 [docs/verification.md](docs/verification.md)。
-
-## 硬件
-
-当前硬件主控选型为 `ESP32-S3-WROOM-1-N16R8`。硬件资料按当前原理图设计整理，包含 8 路 EMG/FPC 输入、AD8226 + TL084 ADC/EMG 放大器、USB-C、电池充电/供电和 5 指关节驱动输出说明。
-
-详见 [hardware/README.md](hardware/README.md) 和 [hardware/reference-schematic.md](hardware/reference-schematic.md)。
+完整验证流程见 [docs/verification.md](docs/verification.md)。
 
 ## 数据格式
 
@@ -47,8 +52,6 @@ python train.py --epochs 1 --batch-size 16 --csv-path emg_hand_gestures.csv
 - `label`：类别标签
 - `action`：可选的手势名称列
 
-数据格式细节见 [docs/data-format.md](docs/data-format.md)。
-
 当前类别映射：
 
 | label | action |
@@ -57,17 +60,7 @@ python train.py --epochs 1 --batch-size 16 --csv-path emg_hand_gestures.csv
 | 1 | `relax` |
 | 2 | `open` |
 
-## 安装依赖
-
-建议使用 Python 3.10 或更新版本。
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
-```
-
-如果需要 CUDA 版本的 PyTorch，请根据本机 CUDA 环境选择对应的 `torch` 安装方式。
+详细说明见 [docs/data-format.md](docs/data-format.md)。
 
 ## 训练
 
@@ -98,23 +91,22 @@ python train.py
 python train.py --epochs 10 --batch-size 64 --lr 0.001
 ```
 
-## Checkpoint
+Checkpoint 默认保存为 `best_model_dict.pth`，包含 `model_state_dict`、`num_classes`、`label_to_action`、`epoch`、`valid_acc`、`valid_loss` 和训练参数。
 
-默认保存路径：
+## 硬件
 
-```text
-best_model_dict.pth
-```
+当前硬件参考方案使用 `ESP32-S3-WROOM-1-N16R8` 模块，包含 8 路 EMG/FPC 输入、AD8226 + TL084 ADC/EMG 放大器、USB-C、电池充电/供电和 5 指关节驱动输出说明。
 
-保存的 checkpoint 包含：
+硬件资料入口：
 
-- `model_state_dict`
-- `num_classes`
-- `label_to_action`
-- `epoch`
-- `valid_acc`
-- `valid_loss`
-- `args`
+- [hardware/README.md](hardware/README.md)
+- [hardware/reference-schematic.md](hardware/reference-schematic.md)
+- [hardware/adc-amplifier.md](hardware/adc-amplifier.md)
+- [hardware/safety-notes.md](hardware/safety-notes.md)
+
+## 参与贡献
+
+提交问题或改动前请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。硬件相关改动应尽量附带原理图源文件、netlist、BOM 依据或实测记录。
 
 ## 许可证
 

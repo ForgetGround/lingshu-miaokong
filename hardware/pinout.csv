@@ -1,30 +1,30 @@
-Net,ESP32-S3-WROOM-1-N16R8 Signal,Direction,Voltage,Description,Verification
-USB_D+,USB_D+,Bidirectional,USB,Native USB data plus,Verify from EasyEDA source schematic
-USB_D-,USB_D-,Bidirectional,USB,Native USB data minus,Verify from EasyEDA source schematic
-3V3,3V3,Power,3.3 V,System rail for ESP32-S3 module,Verify regulator current budget
-GND,GND,Power,0 V,System ground,Verify analog/digital return layout
-BOOT,GPIO0,Input,3.3 V,Boot strap button net,Present in schematic screenshot
-RESET,EN,Input,3.3 V,Module reset/enable net,Present in schematic screenshot
-EMG1,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 1 from FPC/sensor harness,Resolve exact GPIO from EasyEDA netlist
-EMG2,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 2 from FPC/sensor harness,Resolve exact GPIO from EasyEDA netlist
-EMG3,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 3 from FPC/sensor harness,Resolve exact GPIO from EasyEDA netlist
-EMG4,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 4 from FPC/sensor harness,Resolve exact GPIO from EasyEDA netlist
-EMG5,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 5 from FPC/sensor harness,Resolve exact GPIO from EasyEDA netlist
-EMG6,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 6 from FPC/sensor harness,Resolve exact GPIO from EasyEDA netlist
-EMG7,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 7 from FPC/sensor harness,Resolve exact GPIO from EasyEDA netlist
-EMG8,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 8 from FPC/sensor harness,Resolve exact GPIO from EasyEDA netlist
-IO1_1,GPIO TBD,Output,3.3 V,Finger 1 joint drive select/input 1,Resolve exact GPIO from EasyEDA netlist
-IO1_2,GPIO TBD,Output,3.3 V,Finger 1 joint drive select/input 2,Resolve exact GPIO from EasyEDA netlist
-IO1_3,GPIO TBD,Output,3.3 V,Finger 1 joint drive select/input 3,Resolve exact GPIO from EasyEDA netlist
-IO2_1,GPIO TBD,Output,3.3 V,Finger 2 joint drive select/input 1,Resolve exact GPIO from EasyEDA netlist
-IO2_2,GPIO TBD,Output,3.3 V,Finger 2 joint drive select/input 2,Resolve exact GPIO from EasyEDA netlist
-IO2_3,GPIO TBD,Output,3.3 V,Finger 2 joint drive select/input 3,Resolve exact GPIO from EasyEDA netlist
-IO3_1,GPIO TBD,Output,3.3 V,Finger 3 joint drive select/input 1,Resolve exact GPIO from EasyEDA netlist
-IO3_2,GPIO TBD,Output,3.3 V,Finger 3 joint drive select/input 2,Resolve exact GPIO from EasyEDA netlist
-IO3_3,GPIO TBD,Output,3.3 V,Finger 3 joint drive select/input 3,Resolve exact GPIO from EasyEDA netlist
-IO4_1,GPIO TBD,Output,3.3 V,Finger 4 joint drive select/input 1,Resolve exact GPIO from EasyEDA netlist
-IO4_2,GPIO TBD,Output,3.3 V,Finger 4 joint drive select/input 2,Resolve exact GPIO from EasyEDA netlist
-IO4_3,GPIO TBD,Output,3.3 V,Finger 4 joint drive select/input 3,Resolve exact GPIO from EasyEDA netlist
-IO5_1,GPIO TBD,Output,3.3 V,Finger 5 joint drive select/input 1,Resolve exact GPIO from EasyEDA netlist
-IO5_2,GPIO TBD,Output,3.3 V,Finger 5 joint drive select/input 2,Resolve exact GPIO from EasyEDA netlist
-IO5_3,GPIO TBD,Output,3.3 V,Finger 5 joint drive select/input 3,Resolve exact GPIO from EasyEDA netlist
+Net,ESP32-S3-WROOM-1-N16R8 Signal,Direction,Voltage,Description,Status
+USB_D+,USB_D+,Bidirectional,USB,Native USB data plus,Confirm against source schematic
+USB_D-,USB_D-,Bidirectional,USB,Native USB data minus,Confirm against source schematic
+3V3,3V3,Power,3.3 V,System rail for ESP32-S3 module,Regulator current budget required
+GND,GND,Power,0 V,System ground,Analog/digital return layout review required
+BOOT,GPIO0,Input,3.3 V,Boot strap button net,Confirm against source schematic
+RESET,EN,Input,3.3 V,Module reset/enable net,Confirm against source schematic
+EMG1,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 1 after analog front-end,Resolve exact GPIO from netlist
+EMG2,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 2 after analog front-end,Resolve exact GPIO from netlist
+EMG3,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 3 after analog front-end,Resolve exact GPIO from netlist
+EMG4,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 4 after analog front-end,Resolve exact GPIO from netlist
+EMG5,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 5 after analog front-end,Resolve exact GPIO from netlist
+EMG6,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 6 after analog front-end,Resolve exact GPIO from netlist
+EMG7,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 7 after analog front-end,Resolve exact GPIO from netlist
+EMG8,ADC capable GPIO TBD,Input,0-3.3 V,EMG channel 8 after analog front-end,Resolve exact GPIO from netlist
+IO1_1,GPIO TBD,Output,3.3 V,Finger 1 joint drive control 1,Resolve exact GPIO from netlist
+IO1_2,GPIO TBD,Output,3.3 V,Finger 1 joint drive control 2,Resolve exact GPIO from netlist
+IO1_3,GPIO TBD,Output,3.3 V,Finger 1 joint drive control 3,Resolve exact GPIO from netlist
+IO2_1,GPIO TBD,Output,3.3 V,Finger 2 joint drive control 1,Resolve exact GPIO from netlist
+IO2_2,GPIO TBD,Output,3.3 V,Finger 2 joint drive control 2,Resolve exact GPIO from netlist
+IO2_3,GPIO TBD,Output,3.3 V,Finger 2 joint drive control 3,Resolve exact GPIO from netlist
+IO3_1,GPIO TBD,Output,3.3 V,Finger 3 joint drive control 1,Resolve exact GPIO from netlist
+IO3_2,GPIO TBD,Output,3.3 V,Finger 3 joint drive control 2,Resolve exact GPIO from netlist
+IO3_3,GPIO TBD,Output,3.3 V,Finger 3 joint drive control 3,Resolve exact GPIO from netlist
+IO4_1,GPIO TBD,Output,3.3 V,Finger 4 joint drive control 1,Resolve exact GPIO from netlist
+IO4_2,GPIO TBD,Output,3.3 V,Finger 4 joint drive control 2,Resolve exact GPIO from netlist
+IO4_3,GPIO TBD,Output,3.3 V,Finger 4 joint drive control 3,Resolve exact GPIO from netlist
+IO5_1,GPIO TBD,Output,3.3 V,Finger 5 joint drive control 1,Resolve exact GPIO from netlist
+IO5_2,GPIO TBD,Output,3.3 V,Finger 5 joint drive control 2,Resolve exact GPIO from netlist
+IO5_3,GPIO TBD,Output,3.3 V,Finger 5 joint drive control 3,Resolve exact GPIO from netlist
